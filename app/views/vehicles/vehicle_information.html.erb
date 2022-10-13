@@ -1,0 +1,65 @@
+<turbo-frame id="vehicle">
+  <div class="row mt-5 text-center">
+    <div class="col-md-4">
+      <%= form_with url: "/vehicles/vehicle_information", method: :get, remote: true do |form| %>
+        <%= form.text_field :vin, class: 'form-control', placeholder: 'Enter VIN', required: true %>
+        <br /><%= form.submit "Search", class: 'form-control btn btn-dark' %>
+      <% end %>
+    </div>
+    <div class="col-md-8">
+      <% if @vehicle_info %>
+        <table class="table table-striped">
+          <tbody>
+            <tr>
+              <td scope="row">VIN</td>
+              <td><%= @vehicle_info[:vin] %></td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr>
+              <td scope="row">Model Year</td>
+              <td><%= @vehicle_info[:model_year] %></td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr>
+              <td scope="row">Make</td>
+              <td><%= @vehicle_info[:make] %></td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr>
+              <td scope="row">Model</td>
+              <td><%= @vehicle_info[:model] %></td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr>
+              <td scope="row">Trim</td>
+              <td><%= @vehicle_info[:trim] %></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <%= form_with url: reservations_path do |form| %>
+                <%= form.text_field 'vehicle_owner[name]', class: 'form-control mt-3', placeholder: 'Enter Vehicle Owner Name', required: true %>
+                <%= form.text_field 'vehicle_owner[email]', class: 'form-control mt-3', placeholder: 'Enter Vehicle Owner Email', required: true %>
+                <%= form.text_field 'vehicle_owner[address]', class: 'form-control mt-3', placeholder: 'Enter Vehicle Owner Address' %>
+                <%= form.select 'reservation[facility_name]', options_from_collection_for_select(parking_facilities, 'id', 'name'), { include_blank: "-- Choose --" }, class: 'form-control mt-3', required: true  %>
+                <%= form.select 'reservation[parking_slot]', options_from_collection_for_select(parking_spots, 'id', 'name'), { include_blank: "-- Choose --" }, class: 'form-control mt-3', required: true  %>
+                <%= form.hidden_field 'vehicle[vin]', value: @vehicle_info[:vin] %>
+                <%= form.hidden_field 'vehicle[model_year]', value: @vehicle_info[:model_year] %>
+                <%= form.hidden_field 'vehicle[make]', value: @vehicle_info[:make] %>
+                <%= form.hidden_field 'vehicle[model]', value: @vehicle_info[:model] %>
+                <%= form.hidden_field 'vehicle[trim]', value: @vehicle_info[:trim] %>
+                <%= form.submit "Check IN", class: 'form-control btn btn-dark mt-3' %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</turbo-frame>
