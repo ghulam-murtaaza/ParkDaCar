@@ -1,0 +1,17 @@
+<tbody>
+  <tr>
+    <th scope="row"><%= reservation_counter + 1%></th>
+    <td><%= reservation.vehicle.vin %></td>
+    <td><%= reservation.vehicle.make %></td>
+    <td><%= reservation.vehicle.model %></td>
+    <td><%= reservation.vehicle.vehicle_owner.name %></td>
+    <td><%= reservation.vehicle.vehicle_owner.email %></td>
+    <td><%= reservation.check_in.strftime("%d, %B %Y %I:%M %p") %></td>
+    <% if params[:filter] == 'all-reservations' %>
+      <td><%= reservation.check_out.present? ? reservation.check_out.strftime("%d, %B %Y %I:%M %p") : '-' %></td>
+      <td><%= reservation_status(reservation) %></td>
+    <% else %>
+      <td><%= button_to 'Check Out', reservation_path(reservation.id), method: :patch, class: 'btn btn-dark btn-sm' %></td>
+    <% end %>
+  </tr>
+</tbody>

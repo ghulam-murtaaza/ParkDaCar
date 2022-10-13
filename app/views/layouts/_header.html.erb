@@ -1,0 +1,20 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+  <div class="container">
+    <%= link_to 'ParkDaCar', root_path, class: 'navbar-brand' %>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <%= link_to 'Home', root_path, class: 'btn btn-dark' %>
+          <%= link_to 'All Check In', reservations_path(filter: 'all-check-in'), class: 'btn btn-dark' %>
+          <%= link_to 'All Reservations', reservations_path(filter: 'all-reservations'), class: 'btn btn-dark' %>
+        </li>
+        <li class="nav-item">
+        </li>
+      </ul>
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

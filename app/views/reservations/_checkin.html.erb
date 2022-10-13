@@ -1,0 +1,29 @@
+<turbo-frame id="reservations">
+  <div class="container">
+    <div class="row">
+      <div class="mt-5 text-center">
+        <hr class="mb-5">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Vehicle VIN</th>
+              <th scope="col">Make</th>
+              <th scope="col">Model</th>
+              <th scope="col">Vehicle Owner Name</th>
+              <th scope="col">Vehicle Owner Email</th>
+              <th scope="col">Check In</th>
+              <% if params[:filter] == 'all-reservations' %>
+                <th scope="col">Check Out</th>
+                <th scope="col">Reservation Status</th>
+              <% else %>
+                <th scope="col">Check Out Vehicle</th>
+              <% end %>
+            </tr>
+          </thead>
+          <%= render @checkins_reservations %>
+        </table>
+      </div>
+    </div>
+  </div>
+</turbo-frame>
