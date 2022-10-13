@@ -1,24 +1,48 @@
-# README
+# Poject Name
+ParkDaCar
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Description
 
-Things you may want to cover:
+The following are the endpoints that are supported
+- Home page where you can see vehicle detail and checkin using the VIN number
+- All checkin page to see which vehicles are checked in
+- All reservations page to see all the reservations status which are checked in or checked out
 
-* Ruby version
+# System Architecture
 
-* System dependencies
+- Homepage to see the detail using NHTSA Api and checkin vehicle and manage reservations for checkin/checkout of vehicle in parking management system.
 
-* Configuration
+Advantages:
+- Manages checkin and checkout details for vehicle
+- see reservations being made in a parking system
 
-* Database creation
+Drawbacks:
+- Eventual consistency
 
-* Database initialization
+# Stack
 
-* How to run the test suite
+* [Ruby](https://www.ruby-lang.org/en/)
+* [Ruby on Rails](https://rubyonrails.org/)
+* [PostgreSQL](https://www.postgresql.org/)
 
-* Services (job queues, cache servers, search engines, etc.)
+------------
+## Getting Started
 
-* Deployment instructions
+To get a local copy up and running follow these simple steps.
 
-* ...
+### Prerequisites
+
+* `ruby 3.1.0`
+* `rails 7.0.4`
+* `postgresql`
+### Installation
+
+1. clone the repo using `git clone `
+2. Install the gems
+`bundle install`
+3. Setup database `rake db:create rake db:migrate rake db:seed`
+4. Start the server
+`./bin/dev`
+5. Visit the following link in your browser
+`localhost:3000`
+
